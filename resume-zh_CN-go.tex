@@ -1,0 +1,85 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
+
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
+%\usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
+\usepackage{linespacing_fix} % disable extra space before next section
+\usepackage{cite}
+
+\begin{document}
+\pagenumbering{gobble} % suppress displaying page number
+
+\name{程华}
+
+\basicInfo{
+  \email{chenghua.root@gmail.com} \textperiodcentered\
+  \phone{(+86) 158-822-04448} \textperiodcentered\
+}
+\section{\faGraduationCap\  教育背景}
+\datedsubsection{\textbf{电子科技大学}}{2012.9 -- 2015.6}
+\textit{硕士研究生}\ 计算机系统结构
+\datedsubsection{\textbf{电子科技大学}}{2007.9 -- 2011.6}
+\textit{学士}\ 软件工程
+
+\section{\faBuilding\  工作经历}
+\datedsubsection{\textbf{美团网}}{2015.7 -- 至今}
+\textit{}\ 后台开发工程师/分布式系统开发工程师
+
+\section{\faUsers\  项目经历}
+\datedsubsection{\textbf{美团}  北京}{2015年9月 -- 至今}
+\role{美团云图片处理系统}{}
+美团云图片处理系统是构建于美团云对象存储的图片处理系统。支持缩放、裁剪、旋转、图文水印、格式转换、拼图和样式管理等功能；功能全面，使用方便，已被公司内外广泛使用。整个项目采用Go语言+ImageMagick库开发完成。
+\begin{itemize}
+  \item 独立负责整个系统的设计、开发和维护。除功能开发外，还包括：
+  \item 多进程改造：受限于ImageMagick库对单进程的并发处理不够友好，后面改为单监听端口+多进程+多routine模型，系统并发能力提升10倍。
+  \item 开发了对比测试模块，支持跟阿里云的图片服务做对比测试。
+  \item 集群为双机房部署，每个机房为独立缓存系统，提升系统的可靠性。
+  \item API地址：https://www.mtyun.com/doc/api/mss/mss/tu-pian-chu-li-fu-wu-api
+\end{itemize}
+
+\datedsubsection{\textbf{美团}  北京}{2015年10月 -- 至今}
+\role{美团云新一代对象存储系统}{}
+MSS（美团云对象存储服务）是经过美团内部反复验证的，高可靠、高可用、海量、安全的对象存储服务。兼容S3协议，允许指定对象的持久化级别（多副本或者纠删码）；支持光纤互联机房间的异地备份和本地读写优化；保证副本之间强一致；保证在集群掉电或少于设计数量的磁盘损坏的情况下数据不丢失；自动化的扩容与故障隔离；高并发情况下毫秒级别的写入性能以及较高的网络和磁盘带宽；集群高可用性。
+\begin{itemize}
+  \item 了解并参与系统的整体架构，参与设计和实现proxy（协议模块），整体响应和处理流程，包括请求信息处理、元数据导入封装和请求路由。
+  \item 结合元数据缓存管理、设计并发读写、优先本地读取等以降低读取延迟和提高读写响应带宽，利用分布式限速降低系统不可用的风险。
+  \item 使用pprof/go-torch工具对proxy模块进行问题定位和性能调优。
+  \item 优化store模块的核心读写逻辑：采用线程队列、批量提交等技术提高写入性能，使用强一致的副本策略和冻结技术保证数据的一致性。
+  \item 设计EC在线修复流程，结合机房（减少跨机房）、计算修复节点（对修复内容缓存)等降低在线修复延迟，结合心跳信息通知管理节点开启离线修复以恢复EC副本。
+  \item 编写和维护项目多机自动化测试、单机集成测试等脚本程序。
+\end{itemize}
+
+% Reference Test
+%\datedsubsection{\textbf{Paper Title\cite{zaharia2012resilient}}}{May. 2015}
+%An xxx optimized for xxx\cite{verma2015large}
+%\begin{itemize}
+%  \item main contribution
+%\end{itemize}
+
+\section{\faCogs\  技能}
+% increase linespacing [parsep=0.5ex]
+\begin{itemize}[parsep=0.5ex]
+  \item 使用Go、C编写程序。了解Go的原理，有Go语言项目开发经验。
+  \item 多年linux服务端开发经验，熟悉linux环境编程和系统多线程编程，熟悉网络协议（HTTP、TCP/IP）和网络编程。
+  \item 了解分布式系统的基本原理，主要侧重分布式存储系统，有一定的论文和项目积累，了解raft算法，熟悉常见的分布式存储系统的设计。
+  \item 熟练使用Git进行代码管理，可以处理常见的Git问题。
+  \item 熟悉linux系统的使用，掌握常用的操作命令和运维命令，可以使用shell脚本和python开发一些运维工具。
+  \item 关注分布式数据库的最新技术，喜欢看一些分布式数据库相关的文档资料。
+  \item 追求技术，了解一些开源系统的的实现原理。
+\end{itemize}
+
+\section{\faInfo\  其他}
+% increase linespacing [parsep=0.5ex]
+\begin{itemize}[parsep=0.5ex]
+  \item 性格：热爱参与技术分享和交流，积极乐观，能进行良好的沟通合作。
+  \item 运动: 爱好运动，蛙泳/自由泳，参与公司足球比赛，读书期间曾获“成电杯”研究生足球比赛亚军。
+  \item 语言: 英语 - 熟练(六级)
+\end{itemize}
+
+%% Reference
+%\newpage
+%\bibliographystyle{IEEETran}
+%\bibliography{mycite}
+\end{document}
